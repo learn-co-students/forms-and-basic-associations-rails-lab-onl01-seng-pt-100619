@@ -5,13 +5,12 @@
   <%= f.text_field :title %>
   <%= f.label :artist_name %>
   <%= f.text_field :artist_name%>
-  <%= f.text_field :genre_id, list: "genres_autocomplete" %>
-    <datalist id="genres_autocomplete">
-      <% Genre.all.each do |genre| %>
-        <option value="<%= genre.name %>">
-      <% end %>
-    </datalist>
-  <textarea name="song[notes_attributes][]"></textarea>
+  <%=f.label :genre_name%>
+
+  <%= f.collection_select :genre_id, Genre.all, :id, :name %>
+  <textarea name="song[notes][]"></textarea>
+  <textarea name="song[notes][]"></textarea>
+  <textarea name="song[notes][]"></textarea>
   <br />
 
   <%= f.submit %>
