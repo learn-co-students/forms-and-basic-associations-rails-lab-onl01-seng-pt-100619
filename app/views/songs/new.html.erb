@@ -8,9 +8,8 @@
   <%=f.label :genre_name%>
 
   <%= f.collection_select :genre_id, Genre.all, :id, :name %>
-  <textarea name="song[notes][]"></textarea>
-  <textarea name="song[notes][]"></textarea>
-  <textarea name="song[notes][]"></textarea>
+  <textarea name="song[notes_attributes][]" id="song_notes_attributes_0_content"></textarea>
+  <textarea name="song[notes_attributes][]" id="song_notes_attributes_1_content"></textarea>
   <br />
 
   <%= f.submit %>

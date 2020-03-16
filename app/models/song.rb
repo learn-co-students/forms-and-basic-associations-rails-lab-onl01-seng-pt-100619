@@ -2,8 +2,6 @@ class Song < ActiveRecord::Base
   belongs_to :artist
   belongs_to :genre
   has_many :notes
-  accepts_nested_attributes_for :genre
-  accepts_nested_attributes_for :notes
 
   def artist_name=(name)
     self.artist = Artist.find_or_create_by(name: name)
@@ -21,4 +19,9 @@ class Song < ActiveRecord::Base
     self.genre ? self.genre.name : nil
   end
 
+  def notes_attributes=(notes)
+    notes.each do |note|
+      self.notes.build(content: note, song_id: self.id) if !note.blank?
+    end
+  end
 end
