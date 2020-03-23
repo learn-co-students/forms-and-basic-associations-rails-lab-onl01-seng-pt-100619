@@ -10,7 +10,8 @@
 
   
   <%= f.label "Select Category" %>
-  <%= f.collection_select :genre_id, Genre.all, :name, :name %>
+  <%= f.collection_select :genre_id, Genre.all, :name, :id %>
+  
   
   <%= f.submit %>
   <% end %>
