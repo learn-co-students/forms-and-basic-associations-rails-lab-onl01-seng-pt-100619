@@ -4,13 +4,22 @@ class Song < ActiveRecord::Base
   belongs_to :genre
   has_many :notes 
 
+  accepts_nested_attributes_for :notes, reject_if: proc { |attributes| attributes['content'].blank? }
+
 
   def artist_name=(name)
     self.artist = Artist.find_or_create_by(name: name)
   end
 
   def artist_name
-    self.artist ? self.artist.name : nil 
+    artist.try(:name)
   end
-   
+
+  def genre_ids(ids)
+    ids.each do |id|
+      song = Song.find(id)
+      self.song << Song
+    end
+  
+end 
 end

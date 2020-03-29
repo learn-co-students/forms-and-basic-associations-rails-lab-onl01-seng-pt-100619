@@ -9,9 +9,9 @@
   <%= f.text_field :artist_name %>
 
   
-  <%= f.label "Select Category" %>
-  <%= f.collection_select :genre_id, Genre.all, :name, :id %>
-  
-  
+  <%= f.label "Select Genre" %>
+  <%= f.collection_select :genre_id, Genre.all, :id, :name %>
+
   <%= f.submit %>
-  <% end %>
+   <% end %>
+#see controller for additional code (not currently working correctly)
